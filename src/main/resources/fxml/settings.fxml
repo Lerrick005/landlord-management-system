@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.propertymanager.controller.SettingsController"
+           styleClass="content-pane">
+
+    <VBox spacing="20">
+        <padding>
+            <Insets top="24" right="28" bottom="24" left="28"/>
+        </padding>
+
+        <!-- Page header with the single Save button -->
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="4">
+                <Label text="Settings" styleClass="page-title"/>
+                <Label text="Configure your property management system"
+                       styleClass="page-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="saveButton"
+                    text="Save Settings"
+                    styleClass="button-primary"
+                    onAction="#handleSave"
+                    prefHeight="36"
+                    prefWidth="150"/>
+        </HBox>
+
+        <!-- Scrollable body -->
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="AS_NEEDED"
+                    VBox.vgrow="ALWAYS"
+                    minHeight="0"
+                    styleClass="form-scroll">
+            <content>
+                <VBox spacing="18">
+                    <padding>
+                        <Insets top="4" right="8" bottom="20" left="4"/>
+                    </padding>
+
+                    <!-- Organization -->
+                    <VBox styleClass="card" spacing="14">
+                        <VBox spacing="2">
+                            <Label text="Organization" styleClass="section-title"/>
+                            <Label text="This information appears on receipts and reports"
+                                   styleClass="label-muted"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="Organization Name" styleClass="field-label"/>
+                            <TextField fx:id="orgNameField"
+                                       promptText="e.g. Green Eden Hostel"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="Address" styleClass="field-label"/>
+                            <TextField fx:id="orgAddressField"
+                                       promptText="e.g. Karatina, Nyeri County"/>
+                        </VBox>
+
+                        <HBox spacing="14">
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Phone" styleClass="field-label"/>
+                                <TextField fx:id="orgPhoneField"
+                                           promptText="e.g. 0712 345 678"/>
+                            </VBox>
+
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Email" styleClass="field-label"/>
+                                <TextField fx:id="orgEmailField"
+                                           promptText="e.g. info@green-eden.co.ke"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Currency -->
+                    <VBox styleClass="card" spacing="14">
+                        <VBox spacing="2">
+                            <Label text="Currency" styleClass="section-title"/>
+                            <Label text="How money is displayed across the system"
+                                   styleClass="label-muted"/>
+                        </VBox>
+
+                        <HBox spacing="14">
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Currency Code" styleClass="field-label"/>
+                                <TextField fx:id="currencyCodeField"
+                                           promptText="e.g. KES"/>
+                            </VBox>
+
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Currency Symbol" styleClass="field-label"/>
+                                <TextField fx:id="currencySymbolField"
+                                           promptText="e.g. KSh"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Backup -->
+                    <VBox styleClass="card" spacing="14">
+                        <VBox spacing="2">
+                            <Label text="Backup" styleClass="section-title"/>
+                            <Label text="Save a copy of your data, or restore from a previous backup"
+                                   styleClass="label-muted"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="Backup Folder" styleClass="field-label"/>
+                            <HBox spacing="10">
+                                <TextField fx:id="backupFolderField"
+                                           promptText="e.g. D:\Backups\PropertyManager"
+                                           HBox.hgrow="ALWAYS"/>
+                                <Button fx:id="browseButton"
+                                        text="Browse..."
+                                        styleClass="button"
+                                        onAction="#handleBrowse"/>
+                            </HBox>
+                            <Label text="Backups are saved here as timestamped files."
+                                   styleClass="label-muted"/>
+                        </VBox>
+
+                        <Region prefHeight="1"
+                                maxWidth="Infinity"
+                                style="-fx-background-color: -fx-grey-200;"/>
+
+                        <HBox spacing="12">
+                            <Button fx:id="backupNowButton"
+                                    text="Backup Now"
+                                    styleClass="button-primary"
+                                    onAction="#handleBackupNow"
+                                    prefHeight="38"
+                                    prefWidth="170"/>
+                            <Button fx:id="restoreButton"
+                                    text="Restore from Backup..."
+                                    styleClass="button-danger"
+                                    onAction="#handleRestore"
+                                    prefHeight="38"
+                                    prefWidth="200"/>
+                        </HBox>
+                        <Label text="Restore will REPLACE all current data with the contents of the backup file."
+                               styleClass="label-muted"
+                               wrapText="true"/>
+                    </VBox>
+
+                    <!-- Status message (no button here) -->
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label fx:id="statusLabel"
+                               text=""
+                               styleClass="label-muted"/>
+                    </HBox>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+
+    </VBox>
+
+</StackPane>

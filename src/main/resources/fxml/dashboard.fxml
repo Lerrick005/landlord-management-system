@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.propertymanager.controller.DashboardController"
+           styleClass="content-pane">
+
+    <VBox spacing="18">
+        <padding>
+            <Insets top="24" right="28" bottom="24" left="28"/>
+        </padding>
+
+        <!-- ============================================================
+             PAGE HEADER
+             ============================================================ -->
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="4">
+                <Label text="Dashboard" styleClass="page-title"/>
+                <Label fx:id="periodLabel"
+                       text="Overview for the current month"
+                       styleClass="page-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <!-- ============================================================
+             ROW 1 — Primary stat cards
+             ============================================================ -->
+        <GridPane hgap="16" vgap="16">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+                <ColumnConstraints percentWidth="25" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <VBox styleClass="stat-card" spacing="6" GridPane.columnIndex="0">
+                <Label text="TOTAL PROPERTIES" styleClass="stat-card-title"/>
+                <Label fx:id="totalPropertiesLabel" text="0" styleClass="stat-card-value"/>
+                <Label text="properties" styleClass="stat-card-caption"/>
+            </VBox>
+
+            <VBox styleClass="stat-card" spacing="6" GridPane.columnIndex="1">
+                <Label text="TOTAL ROOMS" styleClass="stat-card-title"/>
+                <Label fx:id="totalUnitsLabel" text="0" styleClass="stat-card-value"/>
+                <Label text="rooms" styleClass="stat-card-caption"/>
+            </VBox>
+
+            <VBox styleClass="stat-card" spacing="6" GridPane.columnIndex="2">
+                <Label text="OCCUPIED" styleClass="stat-card-title"/>
+                <Label fx:id="occupiedLabel" text="0" styleClass="stat-card-value"/>
+                <Label text="rooms" styleClass="stat-card-caption"/>
+            </VBox>
+
+            <VBox styleClass="stat-card" spacing="6" GridPane.columnIndex="3">
+                <Label text="VACANT" styleClass="stat-card-title"/>
+                <Label fx:id="vacantLabel" text="0" styleClass="stat-card-value"/>
+                <Label text="rooms" styleClass="stat-card-caption"/>
+            </VBox>
+        </GridPane>
+
+        <!-- ============================================================
+             ROW 2 — Financial stat cards
+             ============================================================ -->
+        <GridPane hgap="16" vgap="16">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33.33" hgrow="ALWAYS"/>
+                <ColumnConstraints percentWidth="33.33" hgrow="ALWAYS"/>
+                <ColumnConstraints percentWidth="33.34" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <VBox styleClass="stat-card" spacing="6" GridPane.columnIndex="0">
+                <Label text="EXPECTED RENT" styleClass="stat-card-title"/>
+                <Label fx:id="expectedRentLabel" text="KSh 0"
+                       styleClass="stat-card-value-gold"/>
+                <Label fx:id="expectedRentCaption"
+                       text="this month"
+                       styleClass="stat-card-caption"/>
+            </VBox>
+
+            <VBox styleClass="stat-card" spacing="6" GridPane.columnIndex="1">
+                <Label text="COLLECTED" styleClass="stat-card-title"/>
+                <Label fx:id="collectedLabel" text="KSh 0"
+                       styleClass="stat-card-value"/>
+                <Label fx:id="collectedCaption"
+                       text="this month"
+                       styleClass="stat-card-caption"/>
+            </VBox>
+
+            <VBox styleClass="stat-card" spacing="6" GridPane.columnIndex="2">
+                <Label text="OUTSTANDING" styleClass="stat-card-title"/>
+                <Label fx:id="outstandingLabel" text="KSh 0"
+                       styleClass="stat-card-value, stat-card-value-danger"/>
+                <Label fx:id="outstandingCaption"
+                       text="this month"
+                       styleClass="stat-card-caption"/>
+            </VBox>
+        </GridPane>
+
+        <!-- ============================================================
+             ROW 3 — Analytics (Occupancy + Recent Payments)
+             ============================================================ -->
+        <GridPane hgap="16" vgap="16">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="34" hgrow="ALWAYS"/>
+                <ColumnConstraints percentWidth="66" hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <!-- Occupancy panel -->
+            <VBox styleClass="card" spacing="14" GridPane.columnIndex="0">
+                <Label text="OCCUPANCY" styleClass="stat-card-title"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <!-- Donut chart placeholder; filled by controller -->
+                    <StackPane fx:id="occupancyChartContainer"
+                               prefWidth="120" prefHeight="120"
+                               minWidth="120" minHeight="120"
+                               maxWidth="120" maxHeight="120"/>
+
+                    <VBox spacing="6" alignment="CENTER_LEFT">
+                        <Label fx:id="occupancyPctLabel"
+                               text="0%"
+                               style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: -fx-charcoal;"/>
+                        <Label fx:id="occupancyDetailLabel"
+                               text="of rooms occupied"
+                               styleClass="label-muted"/>
+                    </VBox>
+                </HBox>
+
+                <Region prefHeight="4"/>
+
+                <VBox spacing="4">
+                    <HBox spacing="8">
+                        <Label text="Occupied"
+                               styleClass="label-muted"
+                               prefWidth="100"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="occOccupiedLabel"
+                               text="0"
+                               styleClass="label-strong"/>
+                    </HBox>
+                    <HBox spacing="8">
+                        <Label text="Vacant"
+                               styleClass="label-muted"
+                               prefWidth="100"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="occVacantLabel"
+                               text="0"
+                               styleClass="label-strong"/>
+                    </HBox>
+                    <HBox spacing="8">
+                        <Label text="Maintenance"
+                               styleClass="label-muted"
+                               prefWidth="100"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="occMaintenanceLabel"
+                               text="0"
+                               styleClass="label-strong"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+
+            <!-- Recent payments panel -->
+            <VBox styleClass="card" spacing="12" GridPane.columnIndex="1">
+                <Label text="RECENT PAYMENTS" styleClass="stat-card-title"/>
+
+                <VBox fx:id="recentPaymentsList"
+                      spacing="8">
+
+                    <!-- Empty state -->
+                    <VBox fx:id="recentPaymentsEmpty"
+                          alignment="CENTER"
+                          spacing="6"
+                          visible="false"
+                          managed="false"
+                          prefHeight="140">
+                        <Label text="No payments yet"
+                               styleClass="label-strong"/>
+                        <Label text="Recorded payments will appear here"
+                               styleClass="label-muted"/>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </GridPane>
+
+        <!-- ============================================================
+             ROW 4 — Outstanding Rent table
+             ============================================================ -->
+        <VBox styleClass="card" spacing="10">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="OUTSTANDING RENT" styleClass="stat-card-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="outstandingSummaryLabel"
+                       text="Top 5 tenants"
+                       styleClass="label-muted"/>
+            </HBox>
+
+            <TableView fx:id="outstandingTable"
+                       styleClass="table-view"
+                       prefHeight="220"
+                       minHeight="180">
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+                <columns>
+                    <TableColumn fx:id="osTenantColumn"    text="TENANT"    prefWidth="200"/>
+                    <TableColumn fx:id="osRoomColumn"      text="ROOM"      prefWidth="80"/>
+                    <TableColumn fx:id="osPropertyColumn"  text="PROPERTY"  prefWidth="180"/>
+                    <TableColumn fx:id="osExpectedColumn"  text="EXPECTED"  prefWidth="130"/>
+                    <TableColumn fx:id="osPaidColumn"      text="PAID"      prefWidth="130"/>
+                    <TableColumn fx:id="osBalanceColumn"   text="BALANCE"   prefWidth="130"/>
+                </columns>
+            </TableView>
+
+            <VBox fx:id="outstandingEmpty"
+                  alignment="CENTER"
+                  spacing="6"
+                  visible="false"
+                  managed="false">
+                <Label text="Everyone has paid"
+                       styleClass="label-strong"/>
+                <Label text="No outstanding balances this month"
+                       styleClass="label-muted"/>
+            </VBox>
+        </VBox>
+
+    </VBox>
+
+</StackPane>

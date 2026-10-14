@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.propertymanager.controller.PropertyListController"
+           styleClass="content-pane">
+
+    <VBox spacing="18">
+        <padding>
+            <Insets top="24" right="28" bottom="24" left="28"/>
+        </padding>
+
+        <!-- Page header -->
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <VBox spacing="4">
+                <Label text="Properties" styleClass="page-title"/>
+                <Label text="Manage all your property locations"
+                       styleClass="page-subtitle"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="+ New Property"
+                    styleClass="button-primary"
+                    onAction="#handleNewProperty"/>
+        </HBox>
+
+        <!-- Toolbar -->
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <TextField fx:id="searchField"
+                       promptText="Search by name, code or location..."
+                       prefWidth="320"/>
+            <ComboBox fx:id="statusFilter"
+                      promptText="Status"
+                      prefWidth="140"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="countLabel"
+                   text="0 properties"
+                   styleClass="label-muted"/>
+        </HBox>
+
+        <!-- Table -->
+        <StackPane VBox.vgrow="ALWAYS">
+            <TableView fx:id="propertiesTable" styleClass="table-view">
+                <columns>
+                    <TableColumn fx:id="codeColumn"     text="CODE"     prefWidth="100"/>
+                    <TableColumn fx:id="nameColumn"     text="NAME"     prefWidth="240"/>
+                    <TableColumn fx:id="locationColumn" text="LOCATION" prefWidth="180"/>
+                    <TableColumn fx:id="unitsColumn"    text="UNITS"    prefWidth="80"/>
+                    <TableColumn fx:id="statusColumn"   text="STATUS"   prefWidth="100"/>
+                    <TableColumn fx:id="actionsColumn"  text="ACTIONS"  prefWidth="280"/>
+                </columns>
+            </TableView>
+
+            <!-- Empty state overlay -->
+            <VBox fx:id="emptyState"
+                  alignment="CENTER"
+                  spacing="12"
+                  visible="false"
+                  managed="false">
+                <Label text="NO PROPERTIES YET"
+                       styleClass="section-title"/>
+                <Label text="Start by adding your first property."
+                       styleClass="label-muted"/>
+                <Button text="+ Add Property"
+                        styleClass="button-primary"
+                        onAction="#handleNewProperty"/>
+            </VBox>
+        </StackPane>
+
+    </VBox>
+
+</StackPane>

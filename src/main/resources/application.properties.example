@@ -1,0 +1,23 @@
+# =========================================================
+# APPLICATION CONFIGURATION (EXAMPLE)
+# ---------------------------------------------------------
+# Copy this file to "application.properties" and fill in
+# your real values. Never commit the real file to Git.
+# =========================================================
+
+# ---- Database ----
+db.host=localhost
+db.port=5432
+db.name=property_management
+db.user=postgres
+db.password=CHANGE_ME
+
+# ---- Connection pool ----
+db.pool.maxSize=10
+db.pool.minIdle=2
+
+# ---- Application ----
+app.name=Property Management System
+app.version=1.0.0
+app.currency=KES
+app.currency.symbol=KSh

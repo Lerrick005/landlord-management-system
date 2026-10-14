@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.propertymanager.controller.ReportsController"
+           styleClass="content-pane">
+
+    <VBox spacing="22">
+        <padding>
+            <Insets top="28" right="32" bottom="28" left="32"/>
+        </padding>
+
+        <!-- Page header -->
+        <VBox spacing="4">
+            <Label text="Reports" styleClass="page-title"/>
+            <Label text="Generate, filter and export business reports"
+                   styleClass="page-subtitle"/>
+        </VBox>
+
+        <Region prefHeight="4"/>
+
+        <!-- ============================================================
+             Card grid — filled programmatically by the controller
+             ============================================================ -->
+        <TilePane fx:id="reportGrid"
+                  hgap="18"
+                  vgap="18"
+                  prefColumns="3"
+                  tileAlignment="TOP_LEFT"/>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <!-- Footer hint -->
+        <HBox>
+            <Label text="Tip: each report supports PDF and Excel export."
+                   styleClass="label-muted"/>
+        </HBox>
+
+    </VBox>
+
+</StackPane>

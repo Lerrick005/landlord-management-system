@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.propertymanager.controller.PropertyFormController"
+      styleClass="content-pane"
+      spacing="0"
+      prefWidth="520">
+
+    <!-- Header -->
+    <VBox styleClass="topbar" spacing="4">
+        <padding>
+            <Insets top="18" right="24" bottom="18" left="24"/>
+        </padding>
+        <Label fx:id="headerLabel"
+               text="New Property"
+               styleClass="page-title"/>
+        <Label text="Enter the property details below."
+               styleClass="page-subtitle"/>
+    </VBox>
+
+    <!-- Form body -->
+    <VBox spacing="16">
+        <padding>
+            <Insets top="24" right="24" bottom="20" left="24"/>
+        </padding>
+
+        <!-- Name -->
+        <VBox spacing="6">
+            <Label text="Property Name *" styleClass="field-label"/>
+            <TextField fx:id="nameField"
+                       promptText="e.g. Sunrise Apartments"/>
+            <Label fx:id="nameError"
+                   styleClass="field-error-message"
+                   visible="false" managed="false"/>
+        </VBox>
+
+        <!-- Code + Status row -->
+        <HBox spacing="16">
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Property Code" styleClass="field-label"/>
+                <TextField fx:id="codeField"
+                           promptText="auto-generated"/>
+                <Label text="Leave blank to auto-generate."
+                       styleClass="label-muted"/>
+            </VBox>
+
+            <VBox spacing="6" prefWidth="140">
+                <Label text="Status" styleClass="field-label"/>
+                <ComboBox fx:id="statusCombo" maxWidth="Infinity"/>
+            </VBox>
+        </HBox>
+
+        <!-- Location -->
+        <VBox spacing="6">
+            <Label text="Location" styleClass="field-label"/>
+            <TextField fx:id="locationField"
+                       promptText="e.g. Karatina"/>
+        </VBox>
+
+        <!-- Description -->
+        <VBox spacing="6">
+            <Label text="Description" styleClass="field-label"/>
+            <TextArea fx:id="descriptionArea"
+                      promptText="Optional description"
+                      prefRowCount="3"
+                      wrapText="true"/>
+        </VBox>
+
+        <!-- Notes -->
+        <VBox spacing="6">
+            <Label text="Notes" styleClass="field-label"/>
+            <TextArea fx:id="notesArea"
+                      promptText="Optional notes"
+                      prefRowCount="2"
+                      wrapText="true"/>
+        </VBox>
+
+        <!-- Inline error -->
+        <Label fx:id="formError"
+               styleClass="field-error-message"
+               wrapText="true"
+               visible="false" managed="false"/>
+
+    </VBox>
+
+    <!-- Footer with buttons -->
+    <HBox styleClass="topbar" alignment="CENTER_RIGHT" spacing="10">
+        <padding>
+            <Insets top="14" right="24" bottom="14" left="24"/>
+        </padding>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cancel"
+                styleClass="button"
+                onAction="#handleCancel"
+                cancelButton="true"/>
+        <Button fx:id="saveButton"
+                text="Save Property"
+                styleClass="button-primary"
+                onAction="#handleSave"
+                defaultButton="true"/>
+    </HBox>
+
+</VBox>

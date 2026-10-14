@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "java",
+        "name": "Run PMS",
+        "request": "launch",
+        "mainClass": "com.propertymanager.Main",
+        "projectName": "tenant-management-system",
+        "env": {
+          "DB_HOST": "localhost",
+          "DB_PORT": "5432",
+          "DB_NAME": "property_management",
+          "DB_USER": "postgres",
+          "DB_PASSWORD": "admin123"
+        }
+      }
+    ]
+  }

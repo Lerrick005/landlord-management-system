@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.propertymanager.controller.ReceiptController"
+           styleClass="content-pane"
+           prefWidth="520"
+           prefHeight="680"
+           maxHeight="680">
+
+    <VBox spacing="0" maxWidth="480">
+        <padding>
+            <Insets top="22" right="26" bottom="22" left="26"/>
+        </padding>
+
+        <!-- Header — organization info -->
+        <VBox spacing="4" alignment="CENTER">
+            <Label fx:id="orgNameLabel"
+                   text="Property Management"
+                   styleClass="page-title"/>
+            <Label fx:id="orgAddressLabel"
+                   text=""
+                   styleClass="label-muted"/>
+            <Label fx:id="orgContactLabel"
+                   text=""
+                   styleClass="label-muted"/>
+        </VBox>
+
+        <Region prefHeight="14"/>
+
+        <Region prefHeight="1"
+                maxWidth="Infinity"
+                style="-fx-background-color: -fx-grey-200;"/>
+
+        <Region prefHeight="14"/>
+
+        <!-- Title + receipt number -->
+        <VBox spacing="4" alignment="CENTER">
+            <Label text="PAYMENT RECEIPT"
+                   style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: -fx-charcoal;"/>
+            <Label fx:id="receiptNumberLabel"
+                   text="RCT-2026-000001"
+                   style="-fx-font-size: 13px; -fx-text-fill: -fx-gold-deep; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <Region prefHeight="18"/>
+
+        <!-- Payment successful banner -->
+        <VBox alignment="CENTER"
+              spacing="6"
+              style="-fx-background-color: rgba(46,125,79,0.10); -fx-background-radius: 8; -fx-padding: 14;">
+            <Label text="PAYMENT SUCCESSFUL"
+                   style="-fx-text-fill: -fx-success; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+            <Label fx:id="amountBannerLabel"
+                   text="KSh 0"
+                   style="-fx-text-fill: -fx-charcoal; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <Region prefHeight="18"/>
+
+        <!-- Details -->
+        <VBox spacing="10">
+
+            <HBox spacing="10">
+                <Label text="Received from"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="tenantLabel"
+                       text="—"
+                       styleClass="label-strong"
+                       wrapText="true"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Tenant No."
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="tenantNumberLabel"
+                       text="—"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Property"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="propertyLabel"
+                       text="—"
+                       wrapText="true"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Room"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="roomLabel"
+                       text="—"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="For Month"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="periodLabel"
+                       text="—"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Payment Date"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="paymentDateLabel"
+                       text="—"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Payment Method"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="methodLabel"
+                       text="—"/>
+            </HBox>
+
+            <HBox fx:id="referenceRow" spacing="10">
+                <Label text="Reference"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="referenceLabel"
+                       text="—"/>
+            </HBox>
+
+        </VBox>
+
+        <Region prefHeight="16"/>
+
+        <Region prefHeight="1"
+                maxWidth="Infinity"
+                style="-fx-background-color: -fx-grey-200;"/>
+
+        <Region prefHeight="16"/>
+
+        <!-- Balance summary -->
+        <VBox spacing="8">
+            <HBox spacing="10">
+                <Label text="Monthly Rent"
+                       styleClass="field-label"
+                       prefWidth="180"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="monthlyRentLabel"
+                       text="KSh 0"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Amount Paid (this receipt)"
+                       styleClass="field-label"
+                       prefWidth="180"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="amountPaidLabel"
+                       text="KSh 0"
+                       styleClass="label-strong"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Balance Outstanding"
+                       styleClass="field-label"
+                       prefWidth="180"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="balanceLabel"
+                       text="KSh 0"
+                       style="-fx-text-fill: -fx-danger; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+            </HBox>
+        </VBox>
+
+        <Region prefHeight="18"/>
+
+        <Region prefHeight="1"
+                maxWidth="Infinity"
+                style="-fx-background-color: -fx-grey-200;"/>
+
+        <Region prefHeight="16"/>
+
+        <!-- Footer -->
+        <VBox spacing="4">
+            <HBox spacing="10">
+                <Label text="Recorded by"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="recordedByLabel"
+                       text="—"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Printed"
+                       styleClass="field-label"
+                       prefWidth="140"/>
+                <Label fx:id="printedOnLabel"
+                       text="—"/>
+            </HBox>
+        </VBox>
+
+        <Region prefHeight="14"/>
+
+        <Label text="Thank you. Please keep this receipt for your records."
+               styleClass="label-muted"
+               wrapText="true"
+               textAlignment="CENTER"
+               maxWidth="Infinity"
+               style="-fx-font-style: italic;"/>
+
+    </VBox>
+
+    <!-- Floating action bar -->
+    <HBox alignment="BOTTOM_RIGHT" spacing="8" pickOnBounds="false">
+        <padding>
+            <Insets top="12" right="16" bottom="12" left="16"/>
+        </padding>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="printButton"
+                text="Print"
+                styleClass="button"/>
+        <Button fx:id="exportButton"
+                text="Export PDF"
+                styleClass="button-burgundy"/>
+        <Button fx:id="closeButton"
+                text="Close"
+                styleClass="button-primary"
+                onAction="#handleClose"
+                defaultButton="true"/>
+    </HBox>
+
+</StackPane>

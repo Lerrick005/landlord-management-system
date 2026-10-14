@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.propertymanager.controller.UnitFormController"
+      styleClass="content-pane"
+      spacing="0"
+      prefWidth="540">
+
+    <!-- Header -->
+    <VBox styleClass="topbar" spacing="4">
+        <padding>
+            <Insets top="18" right="24" bottom="18" left="24"/>
+        </padding>
+        <Label fx:id="headerLabel"
+               text="New Room"
+               styleClass="page-title"/>
+        <Label fx:id="subHeaderLabel"
+               text=""
+               styleClass="page-subtitle"/>
+    </VBox>
+
+    <!-- Form body -->
+    <VBox spacing="14">
+        <padding>
+            <Insets top="22" right="24" bottom="20" left="24"/>
+        </padding>
+
+        <!-- Room Number + Type -->
+        <HBox spacing="14">
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Room Number *" styleClass="field-label"/>
+                <TextField fx:id="houseNumberField"
+                           promptText="e.g. K1, S1, A-12"/>
+                <Label fx:id="houseNumberError"
+                       styleClass="field-error-message"
+                       visible="false" managed="false"/>
+            </VBox>
+
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Room Type *" styleClass="field-label"/>
+                <ComboBox fx:id="typeCombo" maxWidth="Infinity"/>
+                <Label fx:id="typeError"
+                       styleClass="field-error-message"
+                       visible="false" managed="false"/>
+            </VBox>
+        </HBox>
+
+        <!-- Rent + Deposit -->
+        <HBox spacing="14">
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Monthly Rent (KSh) *" styleClass="field-label"/>
+                <TextField fx:id="rentField"
+                           promptText="e.g. 8000"/>
+                <Label fx:id="rentError"
+                       styleClass="field-error-message"
+                       visible="false" managed="false"/>
+            </VBox>
+
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Deposit (KSh)" styleClass="field-label"/>
+                <TextField fx:id="depositField"
+                           promptText="e.g. 8000 (optional)"/>
+                <Label fx:id="depositError"
+                       styleClass="field-error-message"
+                       visible="false" managed="false"/>
+            </VBox>
+        </HBox>
+
+        <!-- Status -->
+        <VBox spacing="6">
+            <Label text="Status" styleClass="field-label"/>
+            <ComboBox fx:id="statusCombo" maxWidth="200"/>
+        </VBox>
+
+        <!-- Notes -->
+        <VBox spacing="6">
+            <Label text="Notes" styleClass="field-label"/>
+            <TextArea fx:id="notesArea"
+                      promptText="Optional notes about this room"
+                      prefRowCount="2"
+                      wrapText="true"/>
+        </VBox>
+
+        <!-- Inline error -->
+        <Label fx:id="formError"
+               styleClass="field-error-message"
+               wrapText="true"
+               visible="false" managed="false"/>
+
+    </VBox>
+
+    <!-- Footer with buttons -->
+    <HBox styleClass="topbar" alignment="CENTER_RIGHT" spacing="10">
+        <padding>
+            <Insets top="14" right="24" bottom="14" left="24"/>
+        </padding>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cancel"
+                styleClass="button"
+                onAction="#handleCancel"
+                cancelButton="true"/>
+        <Button fx:id="saveButton"
+                text="Save Room"
+                styleClass="button-primary"
+                onAction="#handleSave"
+                defaultButton="true"/>
+    </HBox>
+
+</VBox>

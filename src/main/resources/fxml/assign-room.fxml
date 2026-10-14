@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.propertymanager.controller.AssignRoomController"
+      styleClass="content-pane"
+      spacing="0"
+      prefWidth="520">
+
+    <!-- Header -->
+    <VBox styleClass="topbar" spacing="4">
+        <padding>
+            <Insets top="18" right="24" bottom="18" left="24"/>
+        </padding>
+        <Label text="Assign Room"
+               styleClass="page-title"/>
+        <Label fx:id="subHeaderLabel"
+               text=""
+               styleClass="page-subtitle"/>
+    </VBox>
+
+    <!-- Body -->
+    <VBox spacing="14">
+        <padding>
+            <Insets top="22" right="24" bottom="20" left="24"/>
+        </padding>
+
+        <!-- Property -->
+        <VBox spacing="6">
+            <Label text="Property *" styleClass="field-label"/>
+            <ComboBox fx:id="propertyCombo" maxWidth="Infinity"/>
+            <Label fx:id="propertyError"
+                   styleClass="field-error-message"
+                   visible="false" managed="false"/>
+        </VBox>
+
+        <!-- Room -->
+        <VBox spacing="6">
+            <Label text="Room *" styleClass="field-label"/>
+            <ComboBox fx:id="roomCombo" maxWidth="Infinity"/>
+            <Label fx:id="roomError"
+                   styleClass="field-error-message"
+                   visible="false" managed="false"/>
+            <Label fx:id="roomHintLabel"
+                   text=""
+                   styleClass="label-muted"/>
+        </VBox>
+
+        <!-- Move-in date + Rent -->
+        <HBox spacing="14">
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Move-in Date *" styleClass="field-label"/>
+                <DatePicker fx:id="moveInDatePicker" maxWidth="Infinity"/>
+                <Label fx:id="moveInError"
+                       styleClass="field-error-message"
+                       visible="false" managed="false"/>
+            </VBox>
+
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Monthly Rent (KSh) *" styleClass="field-label"/>
+                <TextField fx:id="rentField"
+                           promptText="e.g. 8000"/>
+                <Label fx:id="rentError"
+                       styleClass="field-error-message"
+                       visible="false" managed="false"/>
+            </VBox>
+        </HBox>
+
+        <!-- Deposit -->
+        <VBox spacing="6">
+            <Label text="Deposit Paid (KSh)" styleClass="field-label"/>
+            <TextField fx:id="depositField"
+                       promptText="Optional — e.g. 8000"/>
+        </VBox>
+
+        <!-- Form error -->
+        <Label fx:id="formError"
+               styleClass="field-error-message"
+               wrapText="true"
+               visible="false" managed="false"/>
+
+    </VBox>
+
+    <!-- Footer -->
+    <HBox styleClass="topbar" alignment="CENTER_RIGHT" spacing="10">
+        <padding>
+            <Insets top="14" right="24" bottom="14" left="24"/>
+        </padding>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cancel"
+                styleClass="button"
+                onAction="#handleCancel"
+                cancelButton="true"/>
+        <Button fx:id="saveButton"
+                text="Assign Room"
+                styleClass="button-primary"
+                onAction="#handleSave"
+                defaultButton="true"/>
+    </HBox>
+
+</VBox>

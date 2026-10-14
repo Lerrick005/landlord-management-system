@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+      "vscjava.vscode-java-pack",
+      "redhat.vscode-xml",
+      "mtxr.sqltools",
+      "mtxr.sqltools-driver-pg",
+      "EditorConfig.EditorConfig",
+      "usernamehw.errorlens",
+      "eamodio.gitlens",
+      "PKief.material-icon-theme"
+    ]
+  }

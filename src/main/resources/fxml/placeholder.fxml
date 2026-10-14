@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.propertymanager.controller.PlaceholderController"
+      styleClass="content-pane"
+      spacing="10"
+      alignment="TOP_CENTER">
+
+    <padding>
+        <Insets top="24" right="28" bottom="24" left="28"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
+        <Insets top="80"/>
+        <Label fx:id="titleLabel" text="Section" styleClass="page-title"/>
+        <Label fx:id="subtitleLabel"
+               text="This section will be built in a later phase."
+               styleClass="page-subtitle"/>
+    </VBox>
+
+</VBox>
